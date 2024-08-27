@@ -111,6 +111,8 @@ set `date` = str_to_date(`date`,'%m/%d/%Y');
 alter table layoffs_staging2
 modify column `date` date;
 
+-- 3. Null Values or Blank values
+
 update layoffs_staging2
 set industry = null
 where industry = '';
@@ -139,6 +141,8 @@ delete
 from layoffs_staging2
 where total_laid_off is null and
 percentage_laid_off is null;
+
+-- 4. Remove any columns
 
 select *
 from layoffs_staging2;
